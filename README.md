@@ -11,7 +11,7 @@
 * [Usage](#usage)
 * [Credits](#credits)
 * [License](#license)
-* [Video](#video)
+* [Heroku](#heroku)
 * [Questions](#questions)
 
 ## Installation
@@ -27,7 +27,7 @@
 https://opensource.org/licenses/MPL-2.0 <br />
 Licensed under Mozilla Public License 2.0
 
-## Heroku App
+## Heroku
 https://nameless-beyond-45887.herokuapp.com/
 
 ## Questions
