@@ -41,7 +41,7 @@ router.get('/', (req, res) => {
     });
 });
 
-// get single post
+// get single post specified by the id
 router.get('/post/:id', (req, res) => {
   Post.findOne({
     where: {
@@ -87,6 +87,7 @@ router.get('/post/:id', (req, res) => {
     });
 });
 
+//If User is logged, redirect to homepage
 router.get('/login', (req, res) => {
   if (req.session.loggedIn) {
     res.redirect('/');
@@ -96,6 +97,7 @@ router.get('/login', (req, res) => {
   res.render('login');
 });
 
+//If user is logged in, redirect to homepage
 router.get('/signup', (req, res) => {
   if (req.session.loggedIn) {
     res.redirect('/');

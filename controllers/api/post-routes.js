@@ -3,7 +3,7 @@ const sequelize = require('../../config/connection');
 const { Post, User, Comment} = require('../../models');
 const withAuth = require('../../utils/auth');
 
-// get all users
+// get all posts
 router.get('/', (req, res) => {
   console.log('======================');
   Post.findAll({
@@ -38,6 +38,7 @@ router.get('/', (req, res) => {
     });
 });
 
+//Get a post with the specified id
 router.get('/:id', (req, res) => {
   Post.findOne({
     where: {
@@ -77,8 +78,9 @@ router.get('/:id', (req, res) => {
     });
 });
 
+//Create a post with a title, the content and the associated user_id
 router.post('/', withAuth, (req, res) => {
-  // expects {title: 'Taskmaster goes public!', content: 'https://taskmaster.com/press', user_id: 1}
+  // expects {title: 'Taskmaster goes public!', content: 'This is a new blog post', user_id: 1}
   Post.create({
     title: req.body.title,
     content: req.body.content,
@@ -91,6 +93,7 @@ router.post('/', withAuth, (req, res) => {
     });
 });
 
+//Modify the title and/or the content of the blog post specified by the id
 router.put('/:id', withAuth, (req, res) => {
   Post.update(
     {
@@ -116,6 +119,7 @@ router.put('/:id', withAuth, (req, res) => {
     });
 });
 
+//Delete the blog post specified by the id
 router.delete('/:id', withAuth, (req, res) => {
   console.log('id', req.params.id);
   Post.destroy({

@@ -1,3 +1,4 @@
+//Seed for the comment table
 const { Comment } = require('../models');
 
 const commentdata = [

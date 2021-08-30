@@ -1,3 +1,4 @@
+//Seed for the user table
 const sequelize = require('../config/connection');
 const { User, Post } = require('../models');
 

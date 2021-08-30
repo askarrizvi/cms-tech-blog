@@ -42,6 +42,7 @@ router.get('/', withAuth, (req, res) => {
     });
 });
 
+//Get the post for the edit screen specified by the id(must be logged in)
 router.get('/edit/:id', withAuth, (req, res) => {
   Post.findByPk(req.params.id, {
     attributes: [

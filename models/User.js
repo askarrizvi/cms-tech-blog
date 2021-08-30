@@ -10,7 +10,7 @@ class User extends Model {
     }
   }
 
-  // define table columns and configuration
+  // define user table with id, username, email and password
 User.init(
     {
       id: {
@@ -41,12 +41,12 @@ User.init(
     },
     {
         hooks: {
-            // set up beforeCreate lifecycle "hook" functionality
+            // set up beforeCreate lifecycle "hook" functionality to hah password 
             async beforeCreate(newUserData) {
               newUserData.password = await bcrypt.hash(newUserData.password, 10);
               return newUserData;
             },
-            // set up beforeUpdate lifecycle "hook" functionality
+            // set up beforeUpdate lifecycle "hook" functionality to hash password
             async beforeUpdate(updatedUserData) {
               updatedUserData.password = await bcrypt.hash(updatedUserData.password, 10);
               return updatedUserData;

@@ -3,6 +3,7 @@ const sequelize = require('../config/connection');
 
 class Comment extends Model {}
 
+//Initialize the Comment table with id, content, user_id(id from user table), and post_id(id from post table)
 Comment.init(
   {
     id: {

@@ -13,6 +13,7 @@ router.get('/', (req, res) => {
     });
 });
 
+//Get the user specified by the id
 router.get('/:id', (req, res) => {
   User.findOne({
     attributes: { exclude: ['password'] },
@@ -47,6 +48,7 @@ router.get('/:id', (req, res) => {
     });
 });
 
+//Create a new user with a username, email and password
 router.post('/', (req, res) => {
   // expects {username: 'Lernantino', email: 'lernantino@gmail.com', password: 'password1234'}
   User.create({
@@ -69,6 +71,7 @@ router.post('/', (req, res) => {
     });
 });
 
+//IF at the login page, find a user with the email and password that is specified
 router.post('/login', (req, res) => {
   // expects {email: 'lernantino@gmail.com', password: 'password1234'}
   User.findOne({
@@ -87,7 +90,7 @@ router.post('/login', (req, res) => {
       res.status(400).json({ message: 'Incorrect password!' });
       return;
     }
-
+    //Save the user id, username and set loggedin to true for the session
     req.session.save(() => {
       req.session.user_id = dbUserData.id;
       req.session.username = dbUserData.username;
@@ -98,6 +101,7 @@ router.post('/login', (req, res) => {
   });
 });
 
+//If logout is clicked, destroy the session
 router.post('/logout', (req, res) => {
   if (req.session.loggedIn) {
     req.session.destroy(() => {
@@ -109,6 +113,7 @@ router.post('/logout', (req, res) => {
   }
 });
 
+//Edit the user specified by the id
 router.put('/:id', (req, res) => {
   // expects {username: 'Lernantino', email: 'lernantino@gmail.com', password: 'password1234'}
 
@@ -132,6 +137,7 @@ router.put('/:id', (req, res) => {
     });
 });
 
+//Delete the user specified by the id
 router.delete('/:id', (req, res) => {
   User.destroy({
     where: {

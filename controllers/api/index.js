@@ -1,3 +1,4 @@
+//Set the routes for the api
 const router = require('express').Router();
 
 const userRoutes = require('./user-routes');
