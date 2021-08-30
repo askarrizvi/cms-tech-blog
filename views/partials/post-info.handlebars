@@ -1,11 +1,13 @@
 <article class="post">
 <div class="title">
-  <span>({{title}})</span>
-  <span>({{content}})</span>
+  <a href="/post/{{id}}" class="titlebtn">{{title}}</a>
 </div>
+<div class="content">
+  <span>{{content}}</span>
+  </div>
 <div class="meta">
-  {{vote_count}} {{format_plural "point" vote_count}} by {{user.username}} on {{format_date created_at}}
+  by {{user.username}} on {{format_date created_at}}
   |
-  <a href="/post/{{id}}">{{comments.length}} {{format_plural "comment" comments.length}}</a>
+  <a href="/post/{{id}}" class="titlebtn">{{comments.length}} {{format_plural "comment" comments.length}}</a>
 </div>
 </article>

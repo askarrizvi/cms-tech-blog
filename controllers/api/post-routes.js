@@ -13,6 +13,9 @@ router.get('/', (req, res) => {
       'title',
       'created_at'
     ],
+    order: [
+      ['id', 'DESC']
+  ],
     include: [
       {
         model: Comment,
@@ -91,7 +94,8 @@ router.post('/', withAuth, (req, res) => {
 router.put('/:id', withAuth, (req, res) => {
   Post.update(
     {
-      title: req.body.title
+      title: req.body.title,
+      content: req.body.content
     },
     {
       where: {
